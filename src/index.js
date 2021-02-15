@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import GlobalStyle from "./styles/Global.style";
 import reportWebVitals from "./reportWebVitals";
 import configureStore from "./store/configureStore";
 import { Provider } from "react-redux";
@@ -14,6 +15,7 @@ ReactDOM.render(
     <Provider store={store}>
       <React.StrictMode>
         <App />
+        <GlobalStyle />
       </React.StrictMode>
     </Provider>
   </BrowserRouter>,
