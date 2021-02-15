@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import "./App.css";
 import Home from "./containers/HomeContainer";
 import Detail from "./containers/DetailContainer";
 import NotFound from "./containers/NotFound";
