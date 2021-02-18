@@ -22,7 +22,7 @@ function HomeContainer() {
     <>
       {data && (
         <HomeComponent
-          trendMovie={data[Math.floor(Math.random() * data.length)]}
+          trendMovie={data[Math.floor(Math.random() * (data.length - 10))]}
         />
       )}
     </>
