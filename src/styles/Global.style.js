@@ -7,8 +7,9 @@ const GlobalStyle = createGlobalStyle`
 	}
 
     body {
-    box-sizing: border-box;
-  }
+    	box-sizing: border-box;
+		font-family: 'Noto Sans KR', sans-serif;
+	}
 `;
 
 export default GlobalStyle;
