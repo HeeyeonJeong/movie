@@ -1,4 +1,5 @@
 import React from "react";
+import HeaderCompoenent from "../Header/HeaderComponent";
 import * as S from "./HomeComponent.style";
 
 function HomeComponent({ trendMovie }) {
@@ -10,6 +11,7 @@ function HomeComponent({ trendMovie }) {
             backgroundImage: `url(${`https://image.tmdb.org/t/p/original/${trendMovie.backdrop_path}`})`,
           }}
         >
+          <HeaderCompoenent />
           <S.HomeBox>
             <S.InfoBox>
               <h3>

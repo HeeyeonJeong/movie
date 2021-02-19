@@ -17,6 +17,8 @@ const fontSize = {
   fontS: "10px",
   fontM: "20px",
   fontL: "30px",
+  fontXL: "40px",
+  fontXXL: "50px",
 };
 
 const paddingSize = {
