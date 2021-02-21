@@ -1,18 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DetailComponent from "../components/Detail/DetailComponent";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getTrendMovies } from "../store/modules/home";
+import { useParams } from "react-router-dom";
 
-function DetailContainer({ match }) {
-  const { data, error } = useSelector((state) => state.home.trendMovies);
+function DetailContainer() {
+  const dispatch = useDispatch();
 
-  const { id } = match.params;
+  const { loading, data, error } = useSelector(
+    (state) => state.home.trendMovies
+  );
 
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getTrendMovies());
+  }, [dispatch]);
+
+  if (loading) return <div>로딩중</div>;
+  if (!data) return null;
   if (error) return <div>error</div>;
 
   return (
-    <DetailComponent
-      movie={data && data.find((movie) => movie.id === parseInt(id))}
-    />
+    data && (
+      <DetailComponent
+        movie={data.find((movie) => movie.id === parseInt(id))}
+      />
+    )
   );
 }
 
