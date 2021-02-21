@@ -25,12 +25,16 @@ const paddingSize = {
   paddingS: "10px",
   paddingM: "20px",
   paddingL: "30px",
+  paddingXL: "40px",
+  paddingXXL: "50px",
 };
 
 const marginSize = {
   marginS: "10px",
   marginM: "20px",
   marginL: "30px",
+  marginXL: "40px",
+  marginXXL: "50px",
 };
 
 export const theme = {
