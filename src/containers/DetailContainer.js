@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import DetailComponent from "../components/Detail/DetailComponent";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrendMovies } from "../store/modules/home";
+import { getTrendMovies } from "../store/modules/movies";
 import { useParams } from "react-router-dom";
 
 function DetailContainer() {
   const dispatch = useDispatch();
 
   const { loading, data, error } = useSelector(
-    (state) => state.home.trendMovies
+    (state) => state.movies.trendMovies
   );
 
   const { id } = useParams();

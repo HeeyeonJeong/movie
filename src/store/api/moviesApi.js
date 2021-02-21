@@ -12,3 +12,16 @@ export const getTrendMovies = async () => {
   });
   return response.data.results;
 };
+
+export const getSimilarMovies = async (movie_id) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movie_id}/similar`,
+    {
+      params: {
+        api_key: apiKey,
+        language: "ko",
+      },
+    }
+  );
+  return response.data.results;
+};
