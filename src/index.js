@@ -10,7 +10,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
 
-const store = configureStore();
+export const store = configureStore();
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
