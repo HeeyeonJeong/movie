@@ -25,3 +25,16 @@ export const getSimilarMovies = async (movie_id) => {
   );
   return response.data.results;
 };
+
+export const getUserSelect = async (movie_id) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movie_id}?`,
+    {
+      params: {
+        api_key: apiKey,
+        language: "ko",
+      },
+    }
+  );
+  return response.data;
+};

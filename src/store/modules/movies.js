@@ -11,6 +11,10 @@ const GET_SIMILAR_MOVIES = "similar/GET_SIMILAR_MOVIES";
 const GET_SIMILAR_MOVIES_SUCCESS = "similar/GET_SIMILAR_MOVIES_SUCCESS";
 const GET_SIMILAR_MOVIES_ERROR = "similar/GET_SIMILAR_MOVIES_ERROR";
 
+const GET_USER_SELECT = "user/GET_USER_SELECT";
+const GET_USER_SELECT_SUCCESS = "user/GET_USER_SELECT_SUCCESS";
+const GET_USER_SELECT_ERROR = "user/GET_USER_SELECT_ERROR";
+
 export const getTrendMovies = createPromiseThunk(
   GET_TREND_MOVIES,
   movieAPI.getTrendMovies
@@ -21,6 +25,11 @@ export const getSimilarMovies = createPromiseThunk(
   movieAPI.getSimilarMovies
 );
 
+export const getUserSelect = createPromiseThunk(
+  GET_USER_SELECT,
+  movieAPI.getUserSelect
+);
+
 const getTrendMoviesReducer = handleAsyncActions(
   GET_TREND_MOVIES,
   "trendMovies"
@@ -29,6 +38,11 @@ const getTrendMoviesReducer = handleAsyncActions(
 const getSimilarMoviesReducer = handleAsyncActions(
   GET_SIMILAR_MOVIES,
   "similarMovies"
+);
+
+const getUserSelectReducer = handleAsyncActions(
+  GET_USER_SELECT,
+  "useSelectMovie"
 );
 
 export default function home(state = initialState, action) {
@@ -42,6 +56,11 @@ export default function home(state = initialState, action) {
     case GET_SIMILAR_MOVIES_SUCCESS:
     case GET_SIMILAR_MOVIES_ERROR:
       return getSimilarMoviesReducer(state, action);
+
+    case GET_USER_SELECT:
+    case GET_USER_SELECT_SUCCESS:
+    case GET_USER_SELECT_ERROR:
+      return getUserSelectReducer(state, action);
 
     default:
       return state;
