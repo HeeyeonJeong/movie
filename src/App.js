@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Home from "./containers/HomeContainer";
-import Detail from "./containers/DetailContainer";
-import Genre from "./containers/GenreContainer";
-import My from "./containers/MyContainer";
-import NotFound from "./containers/NotFound";
+import Home from "./Pages/Home";
+import Detail from "./Pages/Detail";
+import Genre from "./Pages/Genre";
+import My from "./Pages/My";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   return (

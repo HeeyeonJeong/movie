@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import DetailComponent from "../components/Detail/DetailComponent";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrendMovies } from "../store/modules/movies";
+import { getTrendMovies } from "../store/modules//movies";
 import { useParams } from "react-router-dom";
 
 function DetailContainer() {

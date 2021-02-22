@@ -1,7 +1,8 @@
 import React from "react";
+import GenreComponent from "../components/Genre/GenreComponent";
 
 function GenreContainer() {
-  return <div>genre</div>;
+  return <GenreComponent />;
 }
 
 export default GenreContainer;
