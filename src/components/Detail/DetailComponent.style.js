@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-const DetailContainer = styled.section`
-  height: 100%;
-`;
-
 const DetailBack = styled.div`
   background-size: cover;
   background-position: center center;
@@ -75,4 +71,4 @@ const InfoBox = styled.div`
   }
 `;
 
-export { DetailContainer, DetailBack, DetaileBox, Poster, InfoBox };
+export { DetailBack, DetaileBox, Poster, InfoBox };

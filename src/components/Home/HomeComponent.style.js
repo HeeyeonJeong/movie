@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const HomeContainer = styled.section`
+const HomeContainer = styled.main`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

@@ -3,10 +3,10 @@ import HeaderCompoenent from "../Header/HeaderComponent";
 
 function LayoutComponent({ children }) {
   return (
-    <div>
+    <>
       <HeaderCompoenent />
       {children}
-    </div>
+    </>
   );
 }
 

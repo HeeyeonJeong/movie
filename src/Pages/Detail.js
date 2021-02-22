@@ -6,8 +6,10 @@ import SimilarContainer from "../containers/SimilarContainer";
 function DetailPage() {
   return (
     <LayoutComponent>
-      <DetailContainer />
-      <SimilarContainer />
+      <main>
+        <DetailContainer />
+        <SimilarContainer />
+      </main>
     </LayoutComponent>
   );
 }

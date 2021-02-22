@@ -10,7 +10,7 @@ function DetailComponent({ movie }) {
   return (
     <>
       {movie && (
-        <S.DetailContainer>
+        <section>
           <S.DetailBack
             style={{
               backgroundImage: `url(${`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`})`,
@@ -32,7 +32,7 @@ function DetailComponent({ movie }) {
               <p>{movie.overview}</p>
             </S.InfoBox>
           </S.DetaileBox>
-        </S.DetailContainer>
+        </section>
       )}
     </>
   );
