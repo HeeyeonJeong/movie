@@ -4,4 +4,5 @@ export const initialState = {
   trendMovies: reducerUtils.initial(),
   similarMovies: reducerUtils.initial(),
   useSelectMovie: reducerUtils.initial(),
+  genreList: reducerUtils.initial(),
 };

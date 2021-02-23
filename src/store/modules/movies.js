@@ -15,6 +15,10 @@ const GET_USER_SELECT = "user/GET_USER_SELECT";
 const GET_USER_SELECT_SUCCESS = "user/GET_USER_SELECT_SUCCESS";
 const GET_USER_SELECT_ERROR = "user/GET_USER_SELECT_ERROR";
 
+const GET_GENRE_LIST = "genreList/GET_GENRE_LIST";
+const GET_GENRE_LIST_SUCCESS = "genreList/GET_GENRE_LIST_SUCCESS";
+const GET_GENRE_LIST_ERROR = "genreList/GET_GENRE_LIST_ERROR";
+
 export const getTrendMovies = createPromiseThunk(
   GET_TREND_MOVIES,
   movieAPI.getTrendMovies
@@ -28,6 +32,11 @@ export const getSimilarMovies = createPromiseThunk(
 export const getUserSelect = createPromiseThunk(
   GET_USER_SELECT,
   movieAPI.getUserSelect
+);
+
+export const getGenreList = createPromiseThunk(
+  GET_GENRE_LIST,
+  movieAPI.getGenreList
 );
 
 const getTrendMoviesReducer = handleAsyncActions(
@@ -45,6 +54,8 @@ const getUserSelectReducer = handleAsyncActions(
   "useSelectMovie"
 );
 
+const getGenreListReducer = handleAsyncActions(GET_GENRE_LIST, "genreList");
+
 export default function home(state = initialState, action) {
   switch (action.type) {
     case GET_TREND_MOVIES:
@@ -61,6 +72,11 @@ export default function home(state = initialState, action) {
     case GET_USER_SELECT_SUCCESS:
     case GET_USER_SELECT_ERROR:
       return getUserSelectReducer(state, action);
+
+    case GET_GENRE_LIST:
+    case GET_GENRE_LIST_SUCCESS:
+    case GET_GENRE_LIST_ERROR:
+      return getGenreListReducer(state, action);
 
     default:
       return state;

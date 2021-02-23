@@ -38,3 +38,16 @@ export const getUserSelect = async (movie_id) => {
   );
   return response.data;
 };
+
+export const getGenreList = async () => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/genre/movie/list?`,
+    {
+      params: {
+        api_key: apiKey,
+        language: "ko",
+      },
+    }
+  );
+  return response.data;
+};
