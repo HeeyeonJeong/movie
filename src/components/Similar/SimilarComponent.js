@@ -16,7 +16,7 @@ function SimilarComponent({ similar }) {
     query: "(max-width:374px)",
   });
 
-  const onClick = (id) => {
+  const pageMove = (id) => {
     dispatch(getUserSelect(id));
   };
 
@@ -27,17 +27,24 @@ function SimilarComponent({ similar }) {
         {similar &&
           similar.map((movie) => (
             <S.List key={movie.id}>
-              <Link
-                to={`/detail/${movie.id}`}
-                onClick={() => onClick(movie.id)}
-              >
+              <div>
                 <img
                   src={`https://image.tmdb.org/t/p/${
                     isTabletUp ? "w185" : is5Down ? "w92" : "w154"
                   }/${movie.poster_path}`}
                   alt={movie.title}
                 />
-              </Link>
+              </div>
+              <S.Back>
+                <h3>{movie.title}</h3>
+                <span>{movie.release_date}</span>
+                <S.More
+                  to={`/detail/${movie.id}`}
+                  onClick={() => pageMove(movie.id)}
+                >
+                  자세히
+                </S.More>
+              </S.Back>
             </S.List>
           ))}
       </S.ListBox>
