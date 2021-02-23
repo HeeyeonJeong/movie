@@ -1,11 +1,15 @@
 import React from "react";
 import LayoutComponent from "../components/Layout/LayoutComponent";
-import GenreContainer from "../containers/GenreContainer";
+import GenreListContainer from "../containers/GenreListContainer";
+import GenreMovieContainer from "../containers/GenreMoviesContainer";
 
 function GenrePage() {
   return (
     <LayoutComponent>
-      <GenreContainer />
+      <main>
+        <GenreListContainer />
+        <GenreMovieContainer />
+      </main>
     </LayoutComponent>
   );
 }
