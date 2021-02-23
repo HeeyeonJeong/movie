@@ -49,5 +49,5 @@ export const getGenreList = async () => {
       },
     }
   );
-  return response.data;
+  return response.data.genres;
 };
