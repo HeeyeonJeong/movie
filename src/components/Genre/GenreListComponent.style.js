@@ -75,6 +75,7 @@ const Label = styled.label`
   position: relative;
   top: 1px;
   font-weight: 600;
+  cursor: pointer;
 `;
 
 const ButtonBox = styled.div`

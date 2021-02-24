@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./GenreListComponent.style";
 
 function GenreListComponent({ data }) {
+  const [selectGenres, setselectGenres] = useState([]); //유저가 선택한 장르
+  const [isAllChecked, setIsAllChecked] = useState(true); //모든 장르 input controller
+
+  const onCancle = () => {
+    setIsAllChecked(true);
+    setselectGenres([]);
+  };
+
+  const handleAll = (checked) => {
+    setselectGenres([]);
+    setIsAllChecked(true);
+  };
+
+  const handleCheck = (e, checked, id) => {
+    setIsAllChecked(false);
+    if (checked) {
+      setselectGenres([...selectGenres, id]);
+    } else {
+      setselectGenres(selectGenres.filter((genre) => genre !== id));
+    }
+  };
+
+  console.log(selectGenres);
+
   return (
     <S.Section>
       <S.Genres>
@@ -10,10 +34,10 @@ function GenreListComponent({ data }) {
           <S.GenreList>
             <S.Input
               type="checkbox"
-              name="genres"
+              name="allGenres"
               id="allGenres"
-              value="allGenres"
-              checked
+              checked={isAllChecked}
+              onChange={(e) => handleAll(e.target.checked)}
             />
             <S.Label htmlFor="allGenres">모든 장르</S.Label>
           </S.GenreList>
@@ -22,16 +46,17 @@ function GenreListComponent({ data }) {
               <S.GenreList key={genre.id}>
                 <S.Input
                   type="checkbox"
-                  name="genres"
-                  id={genre.name}
-                  value={genre.id}
+                  name={genre.name}
+                  id={genre.id}
+                  checked={selectGenres.includes(genre.id) ? true : false}
+                  onChange={(e) => handleCheck(e, e.target.checked, genre.id)}
                 />
-                <S.Label htmlFor={genre.name}>{genre.name}</S.Label>
+                <S.Label htmlFor={genre.id}>{genre.name}</S.Label>
               </S.GenreList>
             ))}
         </S.GenreBox>
         <S.ButtonBox>
-          <S.Button>전체해제</S.Button>
+          <S.Button onClick={onCancle}>전체해제</S.Button>
           <S.Button>찾아보기</S.Button>
         </S.ButtonBox>
       </S.Genres>
