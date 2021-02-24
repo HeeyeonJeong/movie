@@ -7,16 +7,26 @@ function GenreListComponent({ data }) {
       <S.Genres>
         <S.Title>장르별 영화 찾기</S.Title>
         <S.GenreBox>
+          <S.GenreList>
+            <S.Input
+              type="checkbox"
+              name="genres"
+              id="allGenres"
+              value="allGenres"
+              checked
+            />
+            <S.Label htmlFor="allGenres">모든 장르</S.Label>
+          </S.GenreList>
           {data &&
             data.map((genre) => (
               <S.GenreList key={genre.id}>
-                <input
+                <S.Input
                   type="checkbox"
                   name="genres"
                   id={genre.name}
                   value={genre.id}
                 />
-                <label htmlFor={genre.name}>{genre.name}</label>
+                <S.Label htmlFor={genre.name}>{genre.name}</S.Label>
               </S.GenreList>
             ))}
         </S.GenreBox>

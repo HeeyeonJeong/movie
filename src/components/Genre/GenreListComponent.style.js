@@ -56,18 +56,7 @@ const GenreBox = styled.div`
 
 const GenreList = styled.div`
   & + & {
-    margin-left: ${(props) => props.theme.marginS};
-  }
-
-  input {
-    margin-right: 5px;
-  }
-
-  label {
-    font-size: ${(props) => props.theme.fontM};
-    position: relative;
-    top: 1px;
-    font-weight: 600;
+    margin-left: 15px;
   }
 
   @media ${(props) => props.theme.tabletSmall} {
@@ -75,6 +64,17 @@ const GenreList = styled.div`
       margin-left: ${(props) => props.theme.marginM};
     }
   }
+`;
+
+const Input = styled.input`
+  margin-right: 6px;
+`;
+
+const Label = styled.label`
+  font-size: ${(props) => props.theme.fontM};
+  position: relative;
+  top: 1px;
+  font-weight: 600;
 `;
 
 const ButtonBox = styled.div`
@@ -123,4 +123,14 @@ const Button = styled.button`
   }
 `;
 
-export { Section, Genres, Title, GenreBox, GenreList, ButtonBox, Button };
+export {
+  Section,
+  Genres,
+  Title,
+  GenreBox,
+  GenreList,
+  Input,
+  Label,
+  ButtonBox,
+  Button,
+};
