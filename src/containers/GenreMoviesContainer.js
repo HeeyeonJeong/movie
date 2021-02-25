@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { store } from "../index";
 import GenreMoviesComponent from "../components/Genre/GenreMoviesComponent";
 import { getGenreMovies } from "../store/modules/movies";
+import { getGenre } from "../services/genreService";
 
 function GenreMoviesContainer() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getGenreMovies([]));
+    dispatch(getGenreMovies(getGenre));
   }, [dispatch]);
 
   const { loading, data, error } = useSelector(
