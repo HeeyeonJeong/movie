@@ -13,6 +13,7 @@ const Section = styled.section`
 `;
 
 const Title = styled.h2`
+  padding: 0 ${(props) => props.theme.paddingM};
   margin-bottom: ${(props) => props.theme.marginM};
 
   @media ${(props) => props.theme.tabletSmall} {
