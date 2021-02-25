@@ -66,5 +66,5 @@ export const getGenreMovies = async (genres) => {
       },
     }
   );
-  return response.data;
+  return response.data.results;
 };
