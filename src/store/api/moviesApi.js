@@ -51,3 +51,20 @@ export const getGenreList = async () => {
   );
   return response.data.genres;
 };
+
+export const getGenreMovies = async (genres) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/discover/movie?with_genres=${genres}`,
+    {
+      params: {
+        api_key: apiKey,
+        language: "ko",
+        sort_by: "popularity.desc",
+        include_adult: false,
+        include_video: false,
+        page: 1,
+      },
+    }
+  );
+  return response.data;
+};

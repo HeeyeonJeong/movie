@@ -5,4 +5,5 @@ export const initialState = {
   similarMovies: reducerUtils.initial(),
   useSelectMovie: reducerUtils.initial(),
   genreList: reducerUtils.initial(),
+  genreMovies: reducerUtils.initial(),
 };
