@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { store } from "../index";
 import GenreMoviesComponent from "../components/Genre/GenreMoviesComponent";
 import { getGenreMovies } from "../store/modules/movies";
 import { getGenre } from "../services/genreService";
@@ -9,7 +8,7 @@ function GenreMoviesContainer() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getGenreMovies(getGenre));
+    dispatch(getGenreMovies(getGenre.map((genre) => genre.id)));
   }, [dispatch]);
 
   const { loading, data, error } = useSelector(

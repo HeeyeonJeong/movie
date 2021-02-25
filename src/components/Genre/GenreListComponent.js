@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getGenre, setGenre } from "../../services/genreService";
+import { setGenre } from "../../services/genreService";
 import { getGenreMovies } from "../../store/modules/movies";
 import * as S from "./GenreListComponent.style";
 
 function GenreListComponent({ data }) {
   const dispatch = useDispatch();
+  const userGenre = JSON.parse(localStorage.getItem("genre"));
 
-  const [selectGenres, setselectGenres] = useState(getGenre ? getGenre : []); //유저가 선택한 장르
+  const [selectGenres, setselectGenres] = useState(
+    userGenre.length === 0 ? [] : userGenre
+  ); //유저가 선택한 장르
   const [isAllChecked, setIsAllChecked] = useState(
-    getGenre.length === 0 ? true : false
+    userGenre.length === 0 ? true : false
   ); //"모든장르" input controller
 
   //전체해제
@@ -24,18 +27,24 @@ function GenreListComponent({ data }) {
     setIsAllChecked(true);
   };
 
-  const handleCheck = (e, checked, id) => {
+  //"모든장르" 제외 컨트롤
+  const handleCheck = (e, checked, genre) => {
     setIsAllChecked(false);
     if (checked) {
-      setselectGenres([...selectGenres, id]);
+      setselectGenres([...selectGenres, genre]);
     } else {
-      setselectGenres(selectGenres.filter((genre) => genre !== id));
+      setselectGenres(
+        selectGenres.filter(
+          (genres) => JSON.stringify(genres) !== JSON.stringify(genre)
+        )
+      );
     }
   };
 
+  //찾아보기
   const onSearch = () => {
     setGenre(selectGenres);
-    dispatch(getGenreMovies(selectGenres));
+    dispatch(getGenreMovies(selectGenres.map((genre) => genre.id)));
   };
 
   return (
@@ -60,8 +69,12 @@ function GenreListComponent({ data }) {
                   type="checkbox"
                   name={genre.name}
                   id={genre.id}
-                  checked={selectGenres.includes(genre.id) ? true : false}
-                  onChange={(e) => handleCheck(e, e.target.checked, genre.id)}
+                  checked={
+                    JSON.stringify(selectGenres).includes(JSON.stringify(genre))
+                      ? true
+                      : false
+                  }
+                  onChange={(e) => handleCheck(e, e.target.checked, genre)}
                 />
                 <S.Label htmlFor={genre.id}>{genre.name}</S.Label>
               </S.GenreList>

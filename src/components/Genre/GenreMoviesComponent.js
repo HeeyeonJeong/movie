@@ -3,9 +3,14 @@ import * as S from "./GenreMoviesComponent.style";
 import MovieViewComponent from "../MovieView/MovieViewComponent";
 
 function GenreMoviesComponent({ data }) {
+  const genreList = JSON.parse(localStorage.getItem("genre"));
+  const genreName = genreList.map((genre) => genre.name);
+
   return (
     <S.Section>
-      <S.Title>코미디 / 로맨스 / 범죄 / 공포 / 음악 장르</S.Title>
+      <S.Title>
+        {genreName.length ? `${genreName.join(" / ")} 장르` : "모든 장르"}
+      </S.Title>
       <MovieViewComponent data={data} />
     </S.Section>
   );
