@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getGenreMovies } from "../../store/modules/movies";
 import * as S from "./GenreListComponent.style";
 
 function GenreListComponent({ data }) {
+  const dispatch = useDispatch();
+
   const [selectGenres, setselectGenres] = useState([]); //유저가 선택한 장르
   const [isAllChecked, setIsAllChecked] = useState(true); //모든 장르 input controller
 
@@ -10,7 +14,7 @@ function GenreListComponent({ data }) {
     setselectGenres([]);
   };
 
-  const handleAll = (checked) => {
+  const handleAll = () => {
     setselectGenres([]);
     setIsAllChecked(true);
   };
@@ -24,7 +28,9 @@ function GenreListComponent({ data }) {
     }
   };
 
-  console.log(selectGenres);
+  const onSearch = () => {
+    dispatch(getGenreMovies(selectGenres));
+  };
 
   return (
     <S.Section>
@@ -57,7 +63,7 @@ function GenreListComponent({ data }) {
         </S.GenreBox>
         <S.ButtonBox>
           <S.Button onClick={onCancle}>전체해제</S.Button>
-          <S.Button>찾아보기</S.Button>
+          <S.Button onClick={onSearch}>찾아보기</S.Button>
         </S.ButtonBox>
       </S.Genres>
     </S.Section>
