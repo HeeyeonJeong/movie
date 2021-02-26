@@ -3,16 +3,26 @@ import * as BsIcons from "react-icons/bs";
 import * as S from "./LikeComponent.style";
 
 function LikeComponent({ movie }) {
+  const likeBox = JSON.parse(localStorage.getItem("liked"))
+    ? JSON.parse(localStorage.getItem("liked"))
+    : [];
+
   const [like, setLike] = useState(
-    localStorage.getItem(movie.id) ? false : true
+    likeBox.some((save) => JSON.stringify(save) === JSON.stringify(movie))
+      ? false
+      : true
   );
 
   const ontoggle = () => {
     setLike(!like);
     if (like) {
-      localStorage.setItem(movie.id, JSON.stringify(movie));
+      likeBox.push(movie);
+      localStorage.setItem("liked", JSON.stringify(likeBox));
     } else {
-      localStorage.removeItem(movie.id, movie);
+      const likeCancel = likeBox.filter(
+        (el) => JSON.stringify(el) !== JSON.stringify(movie)
+      );
+      localStorage.setItem("liked", JSON.stringify(likeCancel));
     }
   };
 
