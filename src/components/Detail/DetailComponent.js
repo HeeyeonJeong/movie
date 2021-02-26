@@ -29,7 +29,7 @@ function DetailComponent({ movie }) {
             <S.InfoBox>
               <S.TitleBox>
                 <h1>{movie.title}</h1>
-                <LikeComponent />
+                <LikeComponent movie={movie} />
               </S.TitleBox>
               <h3>{movie.original_title}</h3>
               <span>{movie.release_date}</span>

@@ -10,7 +10,7 @@ const Button = styled.button`
   font-size: ${(props) => props.theme.fontL};
   padding: ${(props) => props.theme.paddingS};
   position: relative;
-  top: -1px;
+  top: -5px;
   cursor: pointer;
 `;
 
