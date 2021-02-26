@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GenreMoviesComponent from "../components/Genre/GenreMoviesComponent";
 import { getGenreMovies } from "../store/modules/movies";
-import { getGenre } from "../services/genreService";
 
 function GenreMoviesContainer() {
   const dispatch = useDispatch();
+  const genreList = JSON.parse(localStorage.getItem("genre"));
 
   useEffect(() => {
-    dispatch(getGenreMovies(getGenre.map((genre) => genre.id)));
+    dispatch(getGenreMovies(genreList.map((genre) => genre.id)));
   }, [dispatch]);
 
   const { loading, data, error } = useSelector(
