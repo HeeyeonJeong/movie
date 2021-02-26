@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "./DetailComponent.style";
 import { useMediaQuery } from "react-responsive";
+import LikeComponent from "../Likes/LikeComponent";
 
 function DetailComponent({ movie }) {
   const isTabletUp = useMediaQuery({
@@ -26,7 +27,10 @@ function DetailComponent({ movie }) {
               />
             </S.Poster>
             <S.InfoBox>
-              <h1>{movie.title}</h1>
+              <S.TitleBox>
+                <h1>{movie.title}</h1>
+                <LikeComponent />
+              </S.TitleBox>
               <h3>{movie.original_title}</h3>
               <span>{movie.release_date}</span>
               <p>{movie.overview}</p>

@@ -50,7 +50,8 @@ const InfoBox = styled.div`
   h1 {
     font-size: ${(props) => props.theme.fontL};
     font-weight: 900;
-    margin-bottom: ${(props) => props.theme.marginM};
+    margin: 0 ${(props) => props.theme.marginS}
+      ${(props) => props.theme.marginM} 0;
   }
 
   h3 {
@@ -84,4 +85,8 @@ const InfoBox = styled.div`
   }
 `;
 
-export { DetailBack, DetaileBox, Poster, InfoBox };
+const TitleBox = styled.div`
+  display: flex;
+`;
+
+export { DetailBack, DetaileBox, Poster, InfoBox, TitleBox };
