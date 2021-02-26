@@ -11,7 +11,11 @@ function GenreMoviesComponent({ data }) {
       <S.Title>
         {genreName.length ? `${genreName.join(" / ")} 장르` : "모든 장르"}
       </S.Title>
-      <MovieViewComponent data={data} />
+      {data.length ? (
+        <MovieViewComponent data={data} />
+      ) : (
+        <S.Blank>장르에 맞는 영화가 없습니다.</S.Blank>
+      )}
     </S.Section>
   );
 }

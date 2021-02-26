@@ -24,14 +24,20 @@ function MovieViewComponent({ data }) {
       {data &&
         data.map((movie) => (
           <S.List key={movie.id}>
-            <div>
-              <img
-                src={`https://image.tmdb.org/t/p/${
-                  isTabletUp ? "w185" : is5Down ? "w92" : "w154"
-                }/${movie.poster_path}`}
-                alt={movie.title}
-              />
-            </div>
+            <S.ImageBox>
+              {movie.poster_path ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/${
+                    isTabletUp ? "w185" : is5Down ? "w92" : "w154"
+                  }/${movie.poster_path}`}
+                  alt={movie.title}
+                />
+              ) : (
+                <S.Blank>
+                  <h3>{movie.title}</h3>
+                </S.Blank>
+              )}
+            </S.ImageBox>
             <S.Back>
               <h3>{movie.title}</h3>
               <span>{movie.release_date}</span>

@@ -18,15 +18,28 @@ const DetaileBox = styled.div`
 `;
 
 const Poster = styled.div`
+  width: 185px;
+  min-height: 250px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 7px 7px 7px black;
+  background-color: rgb(29, 28, 28);
+
+  @media ${(props) => props.theme.tabletSmall} {
+    width: 300px;
+    min-height: 420px;
+  }
 
   @media ${(props) => props.theme.tabletMedium} {
     top: 50%;
     left: 25%;
+  }
+
+  img {
+    display: block;
+    height: 100%;
   }
 `;
 

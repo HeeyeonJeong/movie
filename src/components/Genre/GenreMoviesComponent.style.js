@@ -22,4 +22,9 @@ const Title = styled.h2`
   }
 `;
 
-export { Section, Title };
+const Blank = styled.p`
+  text-align: center;
+  padding: ${(props) => props.theme.paddingXXL};
+`;
+
+export { Section, Title, Blank };

@@ -22,6 +22,51 @@ const List = styled.li`
   }
 `;
 
+const ImageBox = styled.div`
+  @media (max-width: 374px) {
+    width: 92px;
+    min-height: 140px;
+  }
+
+  @media (min-width: 375px) {
+    width: 154px;
+    min-height: 235px;
+  }
+
+  @media ${(props) => props.theme.tabletSmall} {
+    width: 185px;
+    min-height: 278px;
+  }
+
+  img {
+    display: block;
+    height: 100%;
+  }
+`;
+
+const Blank = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  background-color: rgb(29, 28, 28);
+  text-align: center;
+
+  @media (max-width: 374px) {
+    min-height: 140px;
+  }
+
+  @media (min-width: 375px) {
+    min-height: 235px;
+  }
+
+  @media ${(props) => props.theme.tabletSmall} {
+    font-size: ${(props) => props.theme.fontM};
+    min-height: 278px;
+  }
+`;
+
 const Back = styled.div`
   display: none;
   position: absolute;
@@ -77,4 +122,4 @@ const More = styled(Link)`
   }
 `;
 
-export { ListBox, List, Back, More };
+export { ListBox, List, ImageBox, Blank, Back, More };

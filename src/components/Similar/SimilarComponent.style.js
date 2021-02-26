@@ -17,4 +17,9 @@ const SectionTitle = styled.h1`
   margin-bottom: ${(props) => props.theme.marginM};
 `;
 
-export { Section, SectionTitle };
+const Blank = styled.p`
+  text-align: center;
+  padding: ${(props) => props.theme.paddingXXL};
+`;
+
+export { Section, SectionTitle, Blank };
