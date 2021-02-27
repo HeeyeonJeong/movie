@@ -16,6 +16,10 @@ const GlobalStyle = createGlobalStyle`
 		background-color: black;
 		color:white;
 	}
+
+	select{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
 `;
 
 export default GlobalStyle;

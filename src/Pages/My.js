@@ -5,7 +5,9 @@ import MyContainer from "../containers/MyContainer";
 function MyPage() {
   return (
     <LayoutComponent>
-      <MyContainer />
+      <main>
+        <MyContainer />
+      </main>
     </LayoutComponent>
   );
 }
