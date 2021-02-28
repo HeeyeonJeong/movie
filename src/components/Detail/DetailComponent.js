@@ -32,6 +32,10 @@ function DetailComponent({ movie }) {
                 <LikeComponent movie={movie} />
               </S.TitleBox>
               <h3>{movie.original_title}</h3>
+              <span>
+                {movie.genres &&
+                  movie.genres.map((genre) => genre.name).join(" / ")}
+              </span>
               <span>{movie.release_date}</span>
               <p>{movie.overview}</p>
             </S.InfoBox>
