@@ -1,12 +1,13 @@
 import React from "react";
 import HomeContainer from "../containers/HomeContainer";
-import LayoutComponent from "../components/Layout/LayoutComponent";
+import HeaderCompoenent from "../components/Header/HeaderComponent";
 
 function HomePage() {
   return (
-    <LayoutComponent>
+    <>
+      <HeaderCompoenent />
       <HomeContainer />
-    </LayoutComponent>
+    </>
   );
 }
 
