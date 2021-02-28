@@ -1,16 +1,17 @@
 import styled from "styled-components";
 
 const Section = styled.section`
-  margin: 65px 0;
+  min-height: 100%;
+  margin-top: 65px;
   padding: ${(props) => props.theme.paddingL};
 
   @media ${(props) => props.theme.tabletSmall} {
-    margin: 100px 0;
-    padding: 0 90px;
+    margin-top: 100px;
+    padding: 0 90px 100px;
   }
 
   @media ${(props) => props.theme.deskTop} {
-    padding: 0 200px;
+    padding: 0 200px 100px;
   }
 `;
 

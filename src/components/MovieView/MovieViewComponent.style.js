@@ -6,11 +6,6 @@ const ListBox = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding-bottom: 65px;
-
-  @media ${(props) => props.theme.tabletSmall} {
-    padding-bottom: 90px;
-  }
 `;
 
 const List = styled.li`

@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 const Section = styled.section`
-  padding: 0 ${(props) => props.theme.paddingM};
+  padding: 0 30px 30px 30px;
 
   @media ${(props) => props.theme.tabletSmall} {
-    padding: 0 90px;
+    padding: 0 90px 100px;
   }
 
   @media ${(props) => props.theme.deskTop} {
-    padding: 0 160px;
+    padding: 0 160px 100px;
   }
 `;
 
