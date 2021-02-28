@@ -5,7 +5,9 @@ import { getGenreMovies } from "../store/modules/movies";
 
 function GenreMoviesContainer() {
   const dispatch = useDispatch();
-  const genreList = JSON.parse(localStorage.getItem("genre"));
+  const genreList = JSON.parse(localStorage.getItem("genre"))
+    ? JSON.parse(localStorage.getItem("genre"))
+    : [];
 
   useEffect(() => {
     dispatch(getGenreMovies(genreList.map((genre) => genre.id)));

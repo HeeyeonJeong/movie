@@ -3,7 +3,9 @@ import * as S from "./GenreMoviesComponent.style";
 import MovieViewComponent from "../MovieView/MovieViewComponent";
 
 function GenreMoviesComponent({ data }) {
-  const genreList = JSON.parse(localStorage.getItem("genre"));
+  const genreList = JSON.parse(localStorage.getItem("genre"))
+    ? JSON.parse(localStorage.getItem("genre"))
+    : [];
   const genreName = genreList.map((genre) => genre.name);
 
   return (

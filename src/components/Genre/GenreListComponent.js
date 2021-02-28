@@ -6,11 +6,11 @@ import * as S from "./GenreListComponent.style";
 
 function GenreListComponent({ data }) {
   const dispatch = useDispatch();
-  const userGenre = JSON.parse(localStorage.getItem("genre"));
+  const userGenre = JSON.parse(localStorage.getItem("genre"))
+    ? JSON.parse(localStorage.getItem("genre"))
+    : [];
 
-  const [selectGenres, setselectGenres] = useState(
-    userGenre.length === 0 ? [] : userGenre
-  ); //유저가 선택한 장르
+  const [selectGenres, setselectGenres] = useState(userGenre); //유저가 선택한 장르
   const [isAllChecked, setIsAllChecked] = useState(
     userGenre.length === 0 ? true : false
   ); //"모든장르" input controller
