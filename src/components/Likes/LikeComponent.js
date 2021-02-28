@@ -8,7 +8,7 @@ function LikeComponent({ movie }) {
     : [];
 
   const [like, setLike] = useState(
-    likeBox.some((save) => JSON.stringify(save) === JSON.stringify(movie))
+    likeBox.some((save) => JSON.stringify(save.id) === JSON.stringify(movie.id))
       ? false
       : true
   );
