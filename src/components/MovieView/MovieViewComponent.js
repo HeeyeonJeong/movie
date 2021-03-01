@@ -3,6 +3,7 @@ import * as S from "./MovieViewComponent.style";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { getUserSelect } from "../../store/modules/movies";
+import LikeComponent from "../Likes/LikeComponent";
 
 function MovieViewComponent({ data }) {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function MovieViewComponent({ data }) {
               )}
             </S.ImageBox>
             <S.Back>
+              <LikeComponent movie={movie} small="true" />
               <h3>{movie.title}</h3>
               <span>{movie.release_date}</span>
               <S.More

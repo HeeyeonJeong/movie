@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as BsIcons from "react-icons/bs";
 import * as S from "./LikeComponent.style";
 
-function LikeComponent({ movie }) {
+function LikeComponent({ movie, small }) {
   const likeBox = JSON.parse(localStorage.getItem("liked"))
     ? JSON.parse(localStorage.getItem("liked"))
     : [];
@@ -27,7 +27,7 @@ function LikeComponent({ movie }) {
   };
 
   return (
-    <S.Button onClick={ontoggle} like={like}>
+    <S.Button onClick={ontoggle} like={like} size={small}>
       {like ? (
         <BsIcons.BsStar />
       ) : (

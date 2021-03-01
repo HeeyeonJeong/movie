@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-const LikeBox = styled.div``;
+import styled, { css } from "styled-components";
 
 const Button = styled.button`
   background: none;
@@ -12,6 +10,17 @@ const Button = styled.button`
   position: relative;
   top: -5px;
   cursor: pointer;
+
+  ${(props) =>
+    props.size &&
+    css`
+      padding: 5px;
+      font-size: 15px;
+
+      @media (max-width: 320px) {
+        font-size: 10px;
+      }
+    `}
 `;
 
-export { LikeBox, Button };
+export { Button };
