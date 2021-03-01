@@ -77,7 +77,7 @@ const Back = styled.div`
 
   h3 {
     font-size: 15px;
-    margin-bottom: ${(props) => props.theme.marginS};
+    margin: 5px 0 ${(props) => props.theme.marginS} 0;
   }
 
   span {

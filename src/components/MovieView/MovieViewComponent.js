@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { getUserSelect } from "../../store/modules/movies";
 import LikeComponent from "../Likes/LikeComponent";
+import * as BsIcons from "react-icons/bs";
 
 function MovieViewComponent({ data }) {
   const dispatch = useDispatch();
@@ -40,7 +41,10 @@ function MovieViewComponent({ data }) {
               )}
             </S.ImageBox>
             <S.Back>
-              <LikeComponent movie={movie} small="true" />
+              {JSON.parse(localStorage.getItem("liked")) &&
+                JSON.parse(localStorage.getItem("liked")).some(
+                  (save) => JSON.stringify(save.id) === JSON.stringify(movie.id)
+                ) && <BsIcons.BsStarFill style={{ color: "yellow" }} />}
               <h3>{movie.title}</h3>
               <span>{movie.release_date}</span>
               <S.More
