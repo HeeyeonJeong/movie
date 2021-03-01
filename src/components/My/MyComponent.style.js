@@ -11,7 +11,7 @@ const Section = styled.section`
   }
 
   @media ${(props) => props.theme.deskTop} {
-    padding: 0 200px 100px;
+    padding: 0 175px 100px;
   }
 `;
 

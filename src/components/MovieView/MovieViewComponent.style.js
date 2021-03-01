@@ -1,11 +1,23 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const ListBox = styled.ul`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+
+  ${(props) =>
+    props.pick &&
+    css`
+      @media ${(props) => props.theme.deskTop} {
+        justify-content: flex-start;
+
+        & > li + li {
+          margin-left: 10px;
+        }
+      }
+    `}
 `;
 
 const List = styled.li`

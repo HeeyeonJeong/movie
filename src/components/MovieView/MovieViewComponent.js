@@ -3,10 +3,9 @@ import * as S from "./MovieViewComponent.style";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { getUserSelect } from "../../store/modules/movies";
-import LikeComponent from "../Likes/LikeComponent";
 import * as BsIcons from "react-icons/bs";
 
-function MovieViewComponent({ data }) {
+function MovieViewComponent({ data, pick }) {
   const dispatch = useDispatch();
 
   const pageMove = (id) => {
@@ -22,7 +21,7 @@ function MovieViewComponent({ data }) {
   });
 
   return (
-    <S.ListBox>
+    <S.ListBox pick={pick}>
       {data &&
         data.map((movie) => (
           <S.List key={movie.id}>

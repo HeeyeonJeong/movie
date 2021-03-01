@@ -55,7 +55,7 @@ function MyComponent({ likeMovies }) {
       {!sortMovies || (sortMovies && sortMovies.length === 0) ? (
         <S.Desc>찜한 영화가 없습니다.</S.Desc>
       ) : (
-        <MovieViewComponent data={sortMovies} />
+        <MovieViewComponent data={sortMovies} pick />
       )}
     </S.Section>
   );
