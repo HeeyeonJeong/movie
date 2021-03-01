@@ -52,10 +52,10 @@ function MyComponent({ likeMovies }) {
         </S.SelectBox>
       </S.Top>
 
-      {likeMovies ? (
-        <MovieViewComponent data={sortMovies} />
+      {!sortMovies || (sortMovies && sortMovies.length === 0) ? (
+        <S.Desc>찜한 영화가 없습니다.</S.Desc>
       ) : (
-        <p>찜한 영화가 없습니다.</p>
+        <MovieViewComponent data={sortMovies} />
       )}
     </S.Section>
   );

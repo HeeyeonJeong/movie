@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Section = styled.section`
-  min-height: 100%;
+  min-height: 70vh;
   margin-top: 65px;
   padding: ${(props) => props.theme.paddingL};
 
@@ -69,4 +69,9 @@ const Select = styled.select`
   }
 `;
 
-export { Section, Top, TitleBox, Title, Icon, SelectBox, Select };
+const Desc = styled.p`
+  padding: ${(props) => props.theme.paddingXXL};
+  text-align: center;
+`;
+
+export { Section, Top, TitleBox, Title, Icon, SelectBox, Select, Desc };
