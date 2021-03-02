@@ -7,6 +7,8 @@ function LikeComponent({ movie, small }) {
     ? JSON.parse(localStorage.getItem("liked"))
     : [];
 
+  console.log(likeBox);
+
   const [like, setLike] = useState(
     likeBox.some((save) => JSON.stringify(save.id) === JSON.stringify(movie.id))
       ? false
@@ -20,7 +22,7 @@ function LikeComponent({ movie, small }) {
       localStorage.setItem("liked", JSON.stringify(likeBox));
     } else {
       const likeCancel = likeBox.filter(
-        (el) => JSON.stringify(el) !== JSON.stringify(movie)
+        (save) => JSON.stringify(save.id) !== JSON.stringify(movie.id)
       );
       localStorage.setItem("liked", JSON.stringify(likeCancel));
     }
