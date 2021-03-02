@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const HomeContainer = styled.main`
+  display: block;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
