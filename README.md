@@ -1,70 +1,144 @@
-# Getting Started with Create React App
+# movie
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+tmdb API를 활용한 영화 추천 사이트
 
-## Available Scripts
+<br/>
 
-In the project directory, you can run:
+## ⚙ Stack
 
-### `npm start`
+- **React**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - styled-components
+  - react-icons
+  - react-responsive
+  - react-router-dom
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Redux-thunk**
 
-### `npm test`
+- 배포 : netlify
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br/>
 
-### `npm run build`
+## 🖼 UI
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![제목 없음2](https://user-images.githubusercontent.com/70693728/110071057-ac207a80-7dbe-11eb-835e-23068f13152a.jpg)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [Link](https://movie4e8f82.netlify.app/)
+- [Problem & Solution 정리](https://heeyeonjeong.tistory.com/98)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br/>
 
-### `npm run eject`
+## 📚 Features
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- 오늘의 영화 Top10 추천
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 선택한 장르별 영화 Top20 추천
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- 영화 선택 저장
+  - 선택순, 추천순, 인기순 정렬
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<br/>
 
-## Learn More
+## ✅ 구현시 고민한 부분
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- 재사용할 수 있는 컴포넌트는 분리될 수 있도록 컴포넌트 구조를 나눴다.
+- **container component**와 **presentational component**를 나누어 상태, UI를 관리하는 구조로 구성했다.
+- 유틸함수로 refactoring하여 api를 받아오는 부분에서 반복되는 함수를 정리했다.
+- 불필요한 style은 작성하지 않기 위해 고민했다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br/>
 
-### Code Splitting
+## 👩‍💻 기억하고 싶은 주요 기능 Component
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **GenreList Component** : 체크박스 컨트롤 컴포넌트
 
-### Analyzing the Bundle Size
+```javascript
+function GenreListComponent({ data }) {
+  const dispatch = useDispatch();
+  const userGenre = JSON.parse(localStorage.getItem("genre"))
+    ? JSON.parse(localStorage.getItem("genre"))
+    : [];
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  //유저가 선택한 장르
+  const [selectGenres, setselectGenres] = useState(userGenre);
+  //"모든장르" input controller
+  const [isAllChecked, setIsAllChecked] = useState(
+    userGenre.length === 0 ? true : false
+  );
 
-### Making a Progressive Web App
+  //전체해제
+  const onCancle = () => {
+    setIsAllChecked(true);
+    setselectGenres([]);
+  };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  //"모든장르" 컨트롤
+  const handleAll = () => {
+    setselectGenres([]);
+    setIsAllChecked(true);
+  };
 
-### Advanced Configuration
+  //"모든장르" 제외 컨트롤
+  const handleCheck = (e, checked, genre) => {
+    setIsAllChecked(false);
+    if (checked) {
+      setselectGenres([...selectGenres, genre]);
+    } else {
+      setselectGenres(
+        selectGenres.filter(
+          (genres) => JSON.stringify(genres) !== JSON.stringify(genre)
+        )
+      );
+    }
+  };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  //찾아보기
+  const onSearch = () => {
+    setGenre(selectGenres);
+    dispatch(getGenreMovies(selectGenres.map((genre) => genre.id)));
+  };
 
-### Deployment
+  return (
+    <S.Section>
+      <S.Genres>
+        <S.Title>장르별 영화 찾기</S.Title>
+        <S.GenreBox>
+          <S.GenreList>
+            <S.Input
+              type="checkbox"
+              name="allGenres"
+              id="allGenres"
+              checked={isAllChecked}
+              onChange={(e) => handleAll(e.target.checked)}
+            />
+            <S.Label htmlFor="allGenres">모든 장르</S.Label>
+          </S.GenreList>
+          {data &&
+            data.map((genre) => (
+              <S.GenreList key={genre.id}>
+                <S.Input
+                  type="checkbox"
+                  name={genre.name}
+                  id={genre.id}
+                  checked={
+                    JSON.stringify(selectGenres).includes(JSON.stringify(genre))
+                      ? true
+                      : false
+                  }
+                  onChange={(e) => handleCheck(e, e.target.checked, genre)}
+                />
+                <S.Label htmlFor={genre.id}>{genre.name}</S.Label>
+              </S.GenreList>
+            ))}
+        </S.GenreBox>
+        <S.ButtonBox>
+          <S.Button onClick={onCancle}>전체해제</S.Button>
+          <S.Button onClick={onSearch}>찾아보기</S.Button>
+        </S.ButtonBox>
+      </S.Genres>
+    </S.Section>
+  );
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+export default GenreListComponent;
+```
